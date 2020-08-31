@@ -5,16 +5,14 @@ import com.epam.pages.gmail.GmailLoginPage;
 import com.epam.pages.gmail.GmailMessageFormPage;
 import com.epam.pages.gmail.GmailPasswordPage;
 import com.epam.utils.Constants;
+import com.epam.utils.DriverGetter;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
 
 public class GmailTest implements Constants {
     private WebDriver webDriver;
@@ -25,11 +23,7 @@ public class GmailTest implements Constants {
 
     @BeforeClass
     private void setUp() {
-        System.setProperty(DRIVER_NAME, DRIVER_PATH);
-        webDriver = new ChromeDriver();
-        webDriver.manage()
-                .timeouts()
-                .implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
+        webDriver = DriverGetter.getInstance();
         webDriver.get(BASE_URL);
         gmailLoginPage = new GmailLoginPage(webDriver);
         gmailPasswordPage = new GmailPasswordPage(webDriver);
