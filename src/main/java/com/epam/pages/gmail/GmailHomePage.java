@@ -4,6 +4,7 @@ import com.epam.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GmailHomePage extends BasePage {
     @FindBy(xpath = "//*[@class=\"T-I T-I-KE L3\"]")
@@ -13,7 +14,7 @@ public class GmailHomePage extends BasePage {
     private WebElement draftsFolder;
 
     @FindBy(xpath = "//*[@class=\"T-I T-I-KE L3\"]")
-    private WebElement googleLogo;
+    private WebElement mailLogo;
 
     @FindBy(css = ".ae4.UI[gh='tl'] tr:nth-child(1)")
     private WebElement lastDraftMessage;
@@ -25,15 +26,15 @@ public class GmailHomePage extends BasePage {
         super(webDriver);
     }
 
-    public WebElement getGoogleLogo() {
-        return googleLogo;
+    public void waitOnMailLogoToBeClickable() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(mailLogo));
     }
 
-    public void clickCompose() {
+    public void clickComposeButton() {
         composeButton.click();
     }
 
-    public void clickDrafts() {
+    public void clickDraftsFolder() {
         draftsFolder.click();
     }
 
@@ -41,8 +42,8 @@ public class GmailHomePage extends BasePage {
         lastDraftMessage.click();
     }
 
-    public void goToDraftsAndClickLastDraftMessage() {
-        clickDrafts();
+    public void goToDraftsFolderAndClickLastDraftMessage() {
+        clickDraftsFolder();
         clickLastDraftMessage();
     }
 }

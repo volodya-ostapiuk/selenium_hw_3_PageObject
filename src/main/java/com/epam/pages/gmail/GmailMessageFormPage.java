@@ -5,23 +5,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GmailMessageFormPage extends BasePage {
     @FindBy(name = "to")
-    private WebElement sentToField;
+    private WebElement toField;
 
     @FindBy(xpath = "//*[@class='aB gQ pE']")
-    private WebElement sentCcAddition;
+    private WebElement ccAditionLink;
 
     @FindBy(name = "cc")
-    private WebElement sentCcField;
+    private WebElement ccField;
 
     @FindBy(css = ".aB.gQ.pB")
-    private WebElement sentBccAddition;
+    private WebElement bccAditionLink;
 
     @FindBy(name = "bcc")
-    private WebElement sentBccField;
+    private WebElement bccField;
 
     @FindBy(name = "subjectbox")
     private WebElement topicFiled;
@@ -33,10 +32,7 @@ public class GmailMessageFormPage extends BasePage {
     private WebElement sendButton;
 
     @FindBy(css = "img.Ha")
-    private WebElement saveAndCloseButton;
-
-    @FindBy(className = "aDp")
-    private WebElement otherReceivers;
+    private WebElement saveAsDraftAndCloseButton;
 
     @FindBy(css = ".vN.bfK.a3q")
     private WebElement filledToField;
@@ -48,31 +44,27 @@ public class GmailMessageFormPage extends BasePage {
     private WebElement filledBccField;
 
     @FindBy(className = "aYF")
-    private WebElement filledTopic;
-
-    public WebElement getSentToField() {
-        return sentToField;
-    }
+    private WebElement filledTopicField;
 
     public GmailMessageFormPage(WebDriver webDriver) {
         super(webDriver);
     }
 
     public void enterReceiverEmail(String email) {
-        webDriverWait.until(ExpectedConditions.visibilityOf(sentToField));
-        sentToField.sendKeys(email);
+        webDriverWait.until(ExpectedConditions.visibilityOf(toField));
+        toField.sendKeys(email);
     }
 
     public void enterCcEmail(String email) {
-        sentCcAddition.click();
-        webDriverWait.until(ExpectedConditions.visibilityOf(sentCcField));
-        sentCcField.sendKeys(email);
+        ccAditionLink.click();
+        webDriverWait.until(ExpectedConditions.visibilityOf(ccField));
+        ccField.sendKeys(email);
     }
 
     public void enterBccEmail(String email) {
-        sentBccAddition.click();
-        webDriverWait.until(ExpectedConditions.visibilityOf(sentBccField));
-        sentBccField.sendKeys(email);
+        bccAditionLink.click();
+        webDriverWait.until(ExpectedConditions.visibilityOf(bccField));
+        bccField.sendKeys(email);
     }
 
     public void enterTopic(String topic) {
@@ -87,9 +79,9 @@ public class GmailMessageFormPage extends BasePage {
         sendButton.click();
     }
 
-    public void saveAndClose() {
-        saveAndCloseButton.click();
-        webDriverWait.until(ExpectedConditions.invisibilityOf(sentToField));
+    public void saveLetterAsDraftAndClose() {
+        saveAsDraftAndCloseButton.click();
+        webDriverWait.until(ExpectedConditions.invisibilityOf(toField));
     }
 
     public void createLetter(String receiverEmail, String ccEmail, String bccEmail, String topic, String text) {
@@ -100,20 +92,20 @@ public class GmailMessageFormPage extends BasePage {
         enterLetterText(text);
     }
 
-    public String getFilledReceiverEmailAttribute() {
+    public String getEmailAttributeOfFilledToField() {
         return filledToField.getAttribute("email");
     }
 
-    public String getFilledCcEmailAttribute() {
+    public String getEmailAttributeOfFilledCcField() {
         return filledCcField.getAttribute("email");
     }
 
-    public String getFilledBccEmailAttribute() {
+    public String getEmailAttributeOfFilledBccField() {
         return filledBccField.getAttribute("email");
     }
 
     public String getFilledTopicFieldText() {
-        return filledTopic.getText();
+        return filledTopicField.getText();
     }
 
     public String getFilledLetterTextFieldText() {

@@ -20,12 +20,12 @@ public class GmailLoginPage extends BasePage {
         emailInput.sendKeys(email);
     }
 
-    public void clickNext() {
+    public void clickNextButton() {
         nextButton.click();
     }
 
-    public void enterEmailAndClickNext(String email) {
+    public void enterEmailAndClickNextButton(String email) {
         enterEmail(email);
-        clickNext();
+        clickNextButton();
     }
 }

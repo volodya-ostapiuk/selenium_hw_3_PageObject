@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GmailPasswordPage extends BasePage {
     @FindBy(name = "password")
@@ -26,7 +25,7 @@ public class GmailPasswordPage extends BasePage {
         passwordInput.sendKeys(password);
     }
 
-    public void clickNext() {
+    public void clickNextButton() {
         nextButton.click();
     }
 
@@ -34,8 +33,8 @@ public class GmailPasswordPage extends BasePage {
         return chosenProfileLink.getAttribute("aria-label");
     }
 
-    public void enterEmailAndClickNext(String password) {
+    public void enterEmailAndClickNextButton(String password) {
         enterEmail(password);
-        clickNext();
+        clickNextButton();
     }
 }
