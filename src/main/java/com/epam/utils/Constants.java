@@ -15,9 +15,10 @@ public interface Constants {
     String BASE_URL = ConfigProperties.getBaseUrl();
     int TIME_WAIT = ConfigProperties.getTimeWait();
     int MINIMUM = 0;
+    int FIRST_USER_NUMBER = 0;
     List<UserEntity> users = Objects.requireNonNull(getGmailJsonEntity()).getUsers();
-    String TEST_EMAIL = users.get(0).getEmail();
-    String TEST_PASSWORD = users.get(0).getPassword();
+    String TEST_EMAIL = users.get(FIRST_USER_NUMBER).getEmail();
+    String TEST_PASSWORD = users.get(FIRST_USER_NUMBER).getPassword();
     String RECEIVER_EMAIL = getGmailJsonEntity().getReceiver();
     String CC_EMAIL = getGmailJsonEntity().getCc();
     String BCC_EMAIL = getGmailJsonEntity().getBcc();
