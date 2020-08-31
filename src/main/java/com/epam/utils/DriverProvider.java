@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class DriverGetter implements Constants {
+public class DriverProvider implements Constants {
     private static WebDriver webDriver;
 
     static {

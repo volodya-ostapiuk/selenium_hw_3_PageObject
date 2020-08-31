@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Objects;
 
-import static com.epam.utils.PropertyGetter.getProperty;
+import static com.epam.utils.PropertySource.getProperty;
 
-public class JsonReader {
+public class JsonParser {
     public static GmailJsonEntity getJsonEntity() {
         Gson gson = new Gson();
         try (Reader reader = new FileReader(Objects.requireNonNull(getProperty("data_source")))) {

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-import static com.epam.utils.JsonReader.getJsonEntity;
+import static com.epam.utils.JsonParser.getJsonEntity;
 import static com.epam.utils.PropertySource.getProperty;
 
 public interface Constants {
