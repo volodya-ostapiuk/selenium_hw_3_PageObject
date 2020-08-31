@@ -1,19 +1,19 @@
 package com.epam.utils;
 
 import com.epam.model.UserEntity;
+import com.epam.utils.properties.ConfigProperties;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
 import static com.epam.utils.JsonParser.getGmailJsonEntity;
-import static com.epam.utils.PropertySource.getProperty;
 
 public interface Constants {
-    String DRIVER_NAME = Objects.requireNonNull(getProperty("driver_name"));
-    String DRIVER_PATH = Objects.requireNonNull(getProperty("driver_path"));
-    String BASE_URL = getProperty("base_url");
-    int TIME_WAIT = Integer.parseInt(Objects.requireNonNull(getProperty("time_wait")));
+    String DRIVER_NAME = ConfigProperties.getDriverName();
+    String DRIVER_PATH = ConfigProperties.getDriverPath();
+    String BASE_URL = ConfigProperties.getBaseUrl();
+    int TIME_WAIT = ConfigProperties.getTimeWait();
     int MINIMUM = 0;
     List<UserEntity> users = Objects.requireNonNull(getGmailJsonEntity()).getUsers();
     String TEST_EMAIL = users.get(0).getEmail();

@@ -1,4 +1,4 @@
-package com.epam.utils;
+package com.epam.utils.properties;
 
 import java.io.IOException;
 import java.io.InputStream;
