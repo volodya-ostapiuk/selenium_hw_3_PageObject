@@ -4,6 +4,8 @@ import com.epam.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GmailMessageFormPage extends BasePage {
     @FindBy(name = "to")
@@ -57,16 +59,19 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void enterReceiverEmail(String email) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(sentToField));
         sentToField.sendKeys(email);
     }
 
     public void enterCcEmail(String email) {
         sentCcAddition.click();
+        webDriverWait.until(ExpectedConditions.visibilityOf(sentCcField));
         sentCcField.sendKeys(email);
     }
 
     public void enterBccEmail(String email) {
         sentBccAddition.click();
+        webDriverWait.until(ExpectedConditions.visibilityOf(sentBccField));
         sentBccField.sendKeys(email);
     }
 
@@ -84,6 +89,7 @@ public class GmailMessageFormPage extends BasePage {
 
     public void saveAndClose() {
         saveAndCloseButton.click();
+        webDriverWait.until(ExpectedConditions.invisibilityOf(sentToField));
     }
 
     public void createLetter(String receiverEmail, String ccEmail, String bccEmail, String topic, String text) {

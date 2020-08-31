@@ -25,20 +25,8 @@ public class GmailHomePage extends BasePage {
         super(webDriver);
     }
 
-    public WebElement getComposeButton() {
-        return composeButton;
-    }
-
-    public WebElement getDraftsFolder() {
-        return draftsFolder;
-    }
-
     public WebElement getGoogleLogo() {
         return googleLogo;
-    }
-
-    public WebElement getLetterWindow() {
-        return letterWindow;
     }
 
     public void clickCompose() {

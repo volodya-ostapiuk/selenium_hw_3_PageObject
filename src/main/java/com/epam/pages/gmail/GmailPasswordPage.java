@@ -21,21 +21,8 @@ public class GmailPasswordPage extends BasePage {
         super(webDriver);
     }
 
-    public WebElement getNextButton() {
-        return nextButton;
-    }
-
-    public WebElement getPasswordInput() {
-        return passwordInput;
-    }
-
-    public WebElement getChosenProfileLink() {
-        return chosenProfileLink;
-    }
-
     public void enterEmail(String password) {
-        (new WebDriverWait(webDriver, 30))
-                .until(ExpectedConditions.elementToBeClickable(passwordInput));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(passwordInput));
         passwordInput.sendKeys(password);
     }
 

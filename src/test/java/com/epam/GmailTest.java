@@ -57,8 +57,6 @@ public class GmailTest implements Constants {
      * Check does page title contains email
      */
     private void verifyPassword() {
-        (new WebDriverWait(webDriver, TIME_WAIT))
-                .until(ExpectedConditions.elementToBeClickable(gmailPasswordPage.getPasswordInput()));
         gmailPasswordPage.enterEmailAndClickNext(TEST_PASSWORD);
         (new WebDriverWait(webDriver, TIME_WAIT))
                 .until(ExpectedConditions.elementToBeClickable(gmailHomePage.getGoogleLogo()));
@@ -72,10 +70,8 @@ public class GmailTest implements Constants {
      * Check if last sent letter contains needed email, text and topic
      */
     @Test(dependsOnMethods = "verifyLogin")
-    private void verifyDraftLetterCreated() {
+    private void verifyDraftLetterCreation() {
         createLetter();
-        (new WebDriverWait(webDriver, TIME_WAIT))
-                .until(ExpectedConditions.invisibilityOf(gmailHomePage.getLetterWindow()));
         gmailHomePage.goToDraftsAndClickLastDraftMessage();
         Assert.assertTrue(gmailMessageFormPage.getFilledReceiverEmailAttribute().contains(RECEIVER_EMAIL),
                 "Last draft letter doesn't contain created letter receiver.");
@@ -92,8 +88,6 @@ public class GmailTest implements Constants {
 
     private void createLetter() {
         gmailHomePage.clickCompose();
-        (new WebDriverWait(webDriver, TIME_WAIT))
-                .until(ExpectedConditions.elementToBeClickable(gmailMessageFormPage.getSentToField()));
         gmailMessageFormPage.createLetter(RECEIVER_EMAIL, CC_EMAIL, BCC_EMAIL, LETTER_TOPIC, LETTER_TEXT);
         gmailMessageFormPage.saveAndClose();
     }

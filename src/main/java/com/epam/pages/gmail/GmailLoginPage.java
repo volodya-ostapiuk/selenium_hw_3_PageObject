@@ -16,14 +16,6 @@ public class GmailLoginPage extends BasePage {
         super(webDriver);
     }
 
-    public WebElement getEmailInput() {
-        return emailInput;
-    }
-
-    public WebElement getNextButton() {
-        return nextButton;
-    }
-
     public void enterEmail(String email) {
         emailInput.sendKeys(email);
     }
