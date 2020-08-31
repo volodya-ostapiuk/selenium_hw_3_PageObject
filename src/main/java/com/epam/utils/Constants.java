@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Random;
 
 import static com.epam.utils.JsonReader.getJsonEntity;
-import static com.epam.utils.PropertyGetter.getProperty;
+import static com.epam.utils.PropertySource.getProperty;
 
 public interface Constants {
     String DRIVER_NAME = Objects.requireNonNull(getProperty("driver_name"));
