@@ -97,7 +97,7 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void sendLetter() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(saveAsDraftAndCloseButton));
+        waitOnEmailFieldToBeVisible(saveAsDraftAndCloseButton);
         sendButton.click();
     }
 
