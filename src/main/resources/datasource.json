@@ -1,9 +1,11 @@
 {
-  "topic": "Selenium test message",
-  "receiver": "ostap.volodya@gmail.com",
-  "cc": "worldlooksbetterthruyoureyes@gmail.com",
-  "bcc": "Volodymyr_Ostapiuk@epam.com",
-  "letterText": "Generated number = ",
+  "message": {
+    "topic": "Selenium test message",
+    "receiver": "ostap.volodya@gmail.com",
+    "cc": "worldlooksbetterthruyoureyes@gmail.com",
+    "bcc": "natalaostapuk1997@gmail.com",
+    "letterText": "Generated number = "
+  },
   "users": [
     {
       "email": "test.automv",

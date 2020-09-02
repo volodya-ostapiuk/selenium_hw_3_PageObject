@@ -1,7 +1,6 @@
 package com.epam.pages.gmail;
 
 import com.epam.pages.BasePage;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -46,24 +45,26 @@ public class GmailMessageFormPage extends BasePage {
     @FindBy(className = "aYF")
     private WebElement filledTopicField;
 
-    public GmailMessageFormPage(WebDriver webDriver) {
-        super(webDriver);
-    }
-
     public void enterReceiverEmail(String email) {
-        webDriverWait.until(ExpectedConditions.visibilityOf(toField));
+        waitOnEmailFieldToBeVisible(toField);
         toField.sendKeys(email);
     }
 
-    public void enterCcEmail(String email) {
+    public void displayCcField() {
         ccAditionLink.click();
-        webDriverWait.until(ExpectedConditions.visibilityOf(ccField));
+    }
+
+    public void enterCcEmail(String email) {
+        waitOnEmailFieldToBeVisible(ccField);
         ccField.sendKeys(email);
     }
 
-    public void enterBccEmail(String email) {
+    public void displayBccField() {
         bccAditionLink.click();
-        webDriverWait.until(ExpectedConditions.visibilityOf(bccField));
+    }
+
+    public void enterBccEmail(String email) {
+        waitOnEmailFieldToBeVisible(bccField);
         bccField.sendKeys(email);
     }
 
@@ -73,23 +74,6 @@ public class GmailMessageFormPage extends BasePage {
 
     public void enterLetterText(String text) {
         letterTextFiled.sendKeys(text);
-    }
-
-    public void sendLetter() {
-        sendButton.click();
-    }
-
-    public void saveLetterAsDraftAndClose() {
-        saveAsDraftAndCloseButton.click();
-        webDriverWait.until(ExpectedConditions.invisibilityOf(toField));
-    }
-
-    public void createLetter(String receiverEmail, String ccEmail, String bccEmail, String topic, String text) {
-        enterReceiverEmail(receiverEmail);
-        enterCcEmail(ccEmail);
-        enterBccEmail(bccEmail);
-        enterTopic(topic);
-        enterLetterText(text);
     }
 
     public String getEmailAttributeOfFilledToField() {
@@ -110,5 +94,23 @@ public class GmailMessageFormPage extends BasePage {
 
     public String getFilledLetterTextFieldText() {
         return letterTextFiled.getText();
+    }
+
+    public void sendLetter() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(saveAsDraftAndCloseButton));
+        sendButton.click();
+    }
+
+    public void saveLetterAsDraftAndClose() {
+        saveAsDraftAndCloseButton.click();
+        waitOnToFieldToBeInvisible();
+    }
+
+    public void waitOnToFieldToBeInvisible() {
+        webDriverWait.until(ExpectedConditions.invisibilityOf(toField));
+    }
+
+    public void waitOnEmailFieldToBeVisible(WebElement element) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
     }
 }

@@ -22,10 +22,6 @@ public class GmailHomePage extends BasePage {
     @FindBy(css = "div.AD")
     private WebElement letterWindow;
 
-    public GmailHomePage(WebDriver webDriver) {
-        super(webDriver);
-    }
-
     public void waitOnMailLogoToBeClickable() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(mailLogo));
     }
@@ -40,10 +36,5 @@ public class GmailHomePage extends BasePage {
 
     public void clickLastDraftMessage() {
         lastDraftMessage.click();
-    }
-
-    public void goToDraftsFolderAndClickLastDraftMessage() {
-        clickDraftsFolder();
-        clickLastDraftMessage();
     }
 }

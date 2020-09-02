@@ -1,5 +1,6 @@
 package com.epam.utils;
 
+import com.epam.model.MessageEntity;
 import com.epam.model.UserEntity;
 import com.epam.utils.properties.ConfigProperties;
 
@@ -16,13 +17,14 @@ public interface Constants {
     int TIME_WAIT = ConfigProperties.getTimeWait();
     int MINIMUM = 0;
     int FIRST_USER_NUMBER = 0;
-    List<UserEntity> users = Objects.requireNonNull(getGmailJsonEntity()).getUsers();
-    String TEST_EMAIL = users.get(FIRST_USER_NUMBER).getEmail();
-    String TEST_PASSWORD = users.get(FIRST_USER_NUMBER).getPassword();
-    String RECEIVER_EMAIL = getGmailJsonEntity().getReceiver();
-    String CC_EMAIL = getGmailJsonEntity().getCc();
-    String BCC_EMAIL = getGmailJsonEntity().getBcc();
-    String LETTER_TOPIC = getGmailJsonEntity().getTopic();
-    String LETTER_TEXT = getGmailJsonEntity().getLetterText() +
+    List<UserEntity> USERS = Objects.requireNonNull(getGmailJsonEntity()).getUsers();
+    MessageEntity TEST_MESSAGE = getGmailJsonEntity().getMessage();
+    String TEST_EMAIL = USERS.get(FIRST_USER_NUMBER).getEmail();
+    String TEST_PASSWORD = USERS.get(FIRST_USER_NUMBER).getPassword();
+    String TEST_RECEIVER_EMAIL = TEST_MESSAGE.getReceiver();
+    String TEST_CC_EMAIL = TEST_MESSAGE.getCc();
+    String TEST_BCC_EMAIL = TEST_MESSAGE.getBcc();
+    String TEST_LETTER_TOPIC = TEST_MESSAGE.getTopic();
+    String TEST_LETTER_TEXT = TEST_MESSAGE.getLetterText() +
             new Random().nextInt(Integer.MAX_VALUE - MINIMUM) + MINIMUM;
 }

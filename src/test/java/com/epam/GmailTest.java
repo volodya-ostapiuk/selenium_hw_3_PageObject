@@ -1,9 +1,8 @@
 package com.epam;
 
-import com.epam.pages.gmail.GmailHomePage;
-import com.epam.pages.gmail.GmailLoginPage;
-import com.epam.pages.gmail.GmailMessageFormPage;
-import com.epam.pages.gmail.GmailPasswordPage;
+import com.epam.business.GmailLogInBO;
+import com.epam.business.GmailMessageBO;
+import com.epam.model.MessageEntity;
 import com.epam.utils.Constants;
 import com.epam.utils.DriverProvider;
 import org.openqa.selenium.WebDriver;
@@ -14,53 +13,44 @@ import org.testng.annotations.Test;
 
 public class GmailTest implements Constants {
     private WebDriver webDriver;
-    private GmailLoginPage gmailLoginPage;
-    private GmailPasswordPage gmailPasswordPage;
-    private GmailHomePage gmailHomePage;
-    private GmailMessageFormPage gmailMessageFormPage;
+    private GmailLogInBO logInBO;
+    private GmailMessageBO messageBO;
 
     @BeforeClass
     private void setUp() {
         webDriver = DriverProvider.getInstance();
         webDriver.get(BASE_URL);
-        gmailLoginPage = new GmailLoginPage(webDriver);
-        gmailPasswordPage = new GmailPasswordPage(webDriver);
-        gmailHomePage = new GmailHomePage(webDriver);
-        gmailMessageFormPage = new GmailMessageFormPage(webDriver);
+        logInBO = new GmailLogInBO();
+        messageBO = new GmailMessageBO();
     }
 
     /*
-     * Enter email, check does chosen profile link contains email. Enter password. Wait until new page will be opened
-     * and element will be clickable on it. Check does page title contains email. Create new letter. Save it as draft.
+     * Enter email, enter password. Wait until new page will be opened and element will be clickable on it.
+     * Check does page title contains email. Create new letter. Save it as draft.
      * Check if last draft letter contains needed emails, text and topic. Send saved letter.
      */
     @Test
     private void verifyDraftFieldsAreSavedCorrectly() {
-        gmailLoginPage.enterEmailAndClickNextButton(TEST_EMAIL);
-        Assert.assertTrue(gmailPasswordPage.getChosenProfileLinkAttribute().contains(TEST_EMAIL.toLowerCase()),
-                "Not valid email.");
+        logInBO.logIn(TEST_EMAIL, TEST_PASSWORD);
+        Assert.assertTrue(logInBO.getPageTitle().contains(TEST_EMAIL.toLowerCase()),
+                "Wrong login.");
 
-        gmailPasswordPage.enterEmailAndClickNextButton(TEST_PASSWORD);
-        gmailHomePage.waitOnMailLogoToBeClickable();
-        Assert.assertTrue(webDriver.getTitle().toLowerCase().contains(TEST_EMAIL.toLowerCase()),
-                "Wrong password.");
+        messageBO.createDraftMessage(TEST_MESSAGE);
+        messageBO.goToDraftsFolderAndClickLastDraftMessage();
 
-        gmailHomePage.clickComposeButton();
-        gmailMessageFormPage.createLetter(RECEIVER_EMAIL, CC_EMAIL, BCC_EMAIL, LETTER_TOPIC, LETTER_TEXT);
-        gmailMessageFormPage.saveLetterAsDraftAndClose();
-
-        gmailHomePage.goToDraftsFolderAndClickLastDraftMessage();
-        Assert.assertTrue(gmailMessageFormPage.getEmailAttributeOfFilledToField().contains(RECEIVER_EMAIL),
+        MessageEntity filledDraftMessage = messageBO.getDraftMessageEntity();
+        Assert.assertTrue(filledDraftMessage.getReceiver().contains(TEST_RECEIVER_EMAIL),
                 "Last draft letter doesn't contain created letter receiver.");
-        Assert.assertTrue(gmailMessageFormPage.getEmailAttributeOfFilledCcField().contains(CC_EMAIL),
+        Assert.assertTrue(filledDraftMessage.getCc().contains(TEST_CC_EMAIL),
                 "Last draft letter doesn't contain created letter cc receiver.");
-        Assert.assertTrue(gmailMessageFormPage.getEmailAttributeOfFilledBccField().contains(BCC_EMAIL),
+        Assert.assertTrue(filledDraftMessage.getBcc().contains(TEST_BCC_EMAIL),
                 "Last draft letter doesn't contain created letter bcc receiver.");
-        Assert.assertTrue(gmailMessageFormPage.getFilledTopicFieldText().contains(LETTER_TOPIC),
+        Assert.assertTrue(filledDraftMessage.getTopic().contains(TEST_LETTER_TOPIC),
                 "Last draft letter doesn't contain created letter topic.");
-        Assert.assertTrue(gmailMessageFormPage.getFilledLetterTextFieldText().contains(LETTER_TEXT),
+        Assert.assertTrue(filledDraftMessage.getLetterText().contains(TEST_LETTER_TEXT),
                 "Last draft letter doesn't contain created letter text.");
-        gmailMessageFormPage.sendLetter();
+
+        messageBO.sendLastDraftMessage();
     }
 
     @AfterClass

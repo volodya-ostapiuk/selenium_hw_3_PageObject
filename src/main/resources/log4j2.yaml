@@ -1,0 +1,19 @@
+Configuration:
+  name: Log4j2_Config
+  Properties:
+    Property:
+      name: log-path
+      value: logs
+
+  Appenders:
+    Console:
+      name: Console_Log
+      PatternLayout:
+        Pattern: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+
+  Loggers:
+    Root:
+      level: all
+      AppenderRef:
+        - ref: Console_Log
+          level: all
