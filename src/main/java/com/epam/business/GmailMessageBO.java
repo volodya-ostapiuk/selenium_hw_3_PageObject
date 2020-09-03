@@ -35,10 +35,10 @@ public class GmailMessageBO {
     }
 
     public MessageEntity getDraftMessageEntity() {
-        String filledTopicField = messageFormPage.getFilledTopicFieldText();
         String filledToField = messageFormPage.getEmailAttributeOfFilledToField();
         String filledCcField = messageFormPage.getEmailAttributeOfFilledCcField();
         String filledBccField = messageFormPage.getEmailAttributeOfFilledBccField();
+        String filledTopicField = messageFormPage.getFilledTopicFieldText();
         String filledTextField = messageFormPage.getFilledLetterTextFieldText();
         return new MessageEntity(filledTopicField, filledToField, filledCcField, filledBccField, filledTextField);
     }
