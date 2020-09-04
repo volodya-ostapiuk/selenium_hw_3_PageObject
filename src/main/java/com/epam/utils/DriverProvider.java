@@ -12,18 +12,17 @@ public class DriverProvider implements Constants {
         System.setProperty(DRIVER_NAME, DRIVER_PATH);
     }
 
-    public static WebDriver getInstance() {
-        if (webDriver == null) {
-            webDriver = setUp();
-        }
-        return webDriver;
-    }
-
-    private static WebDriver setUp() {
+    private DriverProvider() {
         webDriver = new ChromeDriver();
         webDriver.manage()
                 .timeouts()
                 .implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
+    }
+
+    public static WebDriver getInstance() {
+        if (webDriver == null) {
+            new DriverProvider();
+        }
         return webDriver;
     }
 }

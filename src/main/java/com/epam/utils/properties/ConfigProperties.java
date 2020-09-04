@@ -21,6 +21,10 @@ public class ConfigProperties {
         return Integer.parseInt(Objects.requireNonNull(getProperty("time_wait")));
     }
 
+    public static int getExplicitWait() {
+        return Integer.parseInt(Objects.requireNonNull(getProperty("explicit_wait")));
+    }
+
     public static String getDataSource() {
         return getProperty("data_source");
     }

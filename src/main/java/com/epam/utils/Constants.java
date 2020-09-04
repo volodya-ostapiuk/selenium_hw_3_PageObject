@@ -14,6 +14,7 @@ public interface Constants {
     String DRIVER_PATH = ConfigProperties.getDriverPath();
     String BASE_URL = ConfigProperties.getBaseUrl();
     int TIME_WAIT = ConfigProperties.getTimeWait();
+    int EXPLICIT_WAIT = ConfigProperties.getExplicitWait();
     int FIRST_USER_NUMBER = 0;
     List<UserEntity> USERS = Objects.requireNonNull(getGmailJsonEntity()).getUsers();
     MessageEntity TEST_MESSAGE = MessageEntityProvider.getMessageEntity();

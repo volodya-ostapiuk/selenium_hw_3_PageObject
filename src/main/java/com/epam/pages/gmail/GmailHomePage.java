@@ -3,7 +3,6 @@ package com.epam.pages.gmail;
 import com.epam.decorator.elements.Button;
 import com.epam.decorator.elements.Link;
 import com.epam.pages.BasePage;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 

@@ -16,6 +16,6 @@ public class Link extends BaseElement {
     }
 
     private void waitOnElementToBeClickable() {
-        DriverWaitProvider.getInstance().until(ExpectedConditions.elementToBeClickable(webElement));
+        DriverWaitProvider.getInstance().until(ExpectedConditions.elementToBeClickable(this.webElement));
     }
 }
