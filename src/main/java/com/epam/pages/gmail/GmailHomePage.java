@@ -1,6 +1,7 @@
 package com.epam.pages.gmail;
 
 import com.epam.decorator.elements.Button;
+import com.epam.decorator.elements.Link;
 import com.epam.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,19 +12,16 @@ public class GmailHomePage extends BasePage {
     private Button composeButton;
 
     @FindBy(xpath = "//*[@class='TK']/div[5]//a[@class='J-Ke n0']")
-    private WebElement draftsFolder;
+    private Link draftsFolder;
 
     @FindBy(xpath = "//*[@class=\"T-I T-I-KE L3\"]")
-    private WebElement mailLogo;
+    private Link mailLogo;
 
     @FindBy(css = ".ae4.UI[gh='tl'] tr:nth-child(1)")
-    private WebElement lastDraftMessage;
-
-    @FindBy(css = "div.AD")
-    private WebElement letterWindow;
+    private Link lastDraftMessage;
 
     public void waitOnMailLogoToBeClickable() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(mailLogo));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(mailLogo.getElement()));
     }
 
     public void clickComposeButton() {

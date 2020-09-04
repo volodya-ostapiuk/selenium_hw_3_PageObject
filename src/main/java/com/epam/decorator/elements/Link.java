@@ -5,8 +5,8 @@ import com.epam.utils.DriverWaitProvider;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class Button extends BaseElement {
-    public Button(WebElement webElement) {
+public class Link extends BaseElement {
+    public Link(WebElement webElement) {
         super(webElement);
     }
 

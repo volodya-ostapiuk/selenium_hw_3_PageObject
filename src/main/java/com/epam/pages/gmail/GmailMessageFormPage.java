@@ -2,9 +2,9 @@ package com.epam.pages.gmail;
 
 import com.epam.decorator.BaseElement;
 import com.epam.decorator.elements.Button;
+import com.epam.decorator.elements.Link;
 import com.epam.decorator.elements.TextField;
 import com.epam.pages.BasePage;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -13,13 +13,13 @@ public class GmailMessageFormPage extends BasePage {
     private TextField toField;
 
     @FindBy(xpath = "//*[@class='aB gQ pE']")
-    private WebElement ccAditionLink;
+    private Link ccAdditionLink;
 
     @FindBy(name = "cc")
     private TextField ccField;
 
     @FindBy(css = ".aB.gQ.pB")
-    private WebElement bccAditionLink;
+    private Link bccAdditionLink;
 
     @FindBy(name = "bcc")
     private TextField bccField;
@@ -53,7 +53,7 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void displayCcField() {
-        ccAditionLink.click();
+        ccAdditionLink.click();
     }
 
     public void enterCcEmail(String email) {
@@ -61,7 +61,7 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void displayBccField() {
-        bccAditionLink.click();
+        bccAdditionLink.click();
     }
 
     public void enterBccEmail(String email) {
