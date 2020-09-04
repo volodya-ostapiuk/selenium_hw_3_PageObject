@@ -22,4 +22,8 @@ public class Button extends BaseElement {
     public boolean isDisplayed() {
         return webElement.isDisplayed();
     }
+
+    public boolean isEnabled() {
+        return webElement.isEnabled();
+    }
 }

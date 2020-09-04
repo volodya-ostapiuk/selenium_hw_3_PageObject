@@ -49,7 +49,6 @@ public class GmailMessageFormPage extends BasePage {
     private TextField filledTopicField;
 
     public void enterReceiverEmail(String email) {
-        waitOnEmailFieldToBeVisible(toField);
         toField.sendKeys(email);
     }
 
@@ -58,7 +57,6 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void enterCcEmail(String email) {
-        waitOnEmailFieldToBeVisible(ccField);
         ccField.sendKeys(email);
     }
 
@@ -67,7 +65,6 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void enterBccEmail(String email) {
-        waitOnEmailFieldToBeVisible(bccField);
         bccField.sendKeys(email);
     }
 
@@ -100,7 +97,7 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void sendLetter() {
-        waitOnEmailFieldToBeVisible(saveAsDraftAndCloseButton);
+        waitOnElementToBeVisible(saveAsDraftAndCloseButton);
         sendButton.click();
     }
 
@@ -113,7 +110,7 @@ public class GmailMessageFormPage extends BasePage {
         webDriverWait.until(ExpectedConditions.invisibilityOf(toField.getElement()));
     }
 
-    public void waitOnEmailFieldToBeVisible(BaseElement element) {
+    public void waitOnElementToBeVisible(BaseElement element) {
         webDriverWait.until(ExpectedConditions.visibilityOf(element.getElement()));
     }
 }

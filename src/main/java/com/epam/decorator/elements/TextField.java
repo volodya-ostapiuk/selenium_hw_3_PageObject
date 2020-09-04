@@ -12,7 +12,7 @@ public class TextField extends BaseElement {
     }
 
     public void sendKeys(String text) {
-        waitOnElementToBeClickable();
+        waitOnElementToBeVisible();
         webElement.sendKeys(text);
     }
 
@@ -33,6 +33,10 @@ public class TextField extends BaseElement {
 
     public String getAttribute(String attribute) {
         return webElement.getAttribute(attribute);
+    }
+
+    private void waitOnElementToBeVisible() {
+        DriverWaitProvider.getInstance().until(ExpectedConditions.visibilityOf(webElement));
     }
 
     private void waitOnElementToBeClickable() {
