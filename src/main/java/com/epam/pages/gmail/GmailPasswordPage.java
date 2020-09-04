@@ -6,7 +6,6 @@ import com.epam.decorator.elements.TextField;
 import com.epam.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GmailPasswordPage extends BasePage {
     @FindBy(name = "password")
@@ -19,7 +18,7 @@ public class GmailPasswordPage extends BasePage {
     private WebElement chosenProfileLink;
 
     public void enterEmail(String password) {
-        passwordInput.sendKeys(password);
+        passwordInput.typeAndEnter(password);
     }
 
     public void clickNextButton() {

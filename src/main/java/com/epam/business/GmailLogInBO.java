@@ -17,9 +17,8 @@ public class GmailLogInBO {
     }
 
     public void logIn(String userEmail, String userPassword) {
-        loginPage.enterEmail(userEmail);;
+        loginPage.enterEmail(userEmail);
         passwordPage.enterEmail(userPassword);
-        passwordPage.clickNextButton();
     }
 
     public String getPageTitle() {

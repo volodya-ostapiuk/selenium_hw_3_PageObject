@@ -23,6 +23,7 @@ public class TextField extends BaseElement {
     }
 
     public void click() {
+        waitOnElementToBeClickable();
         webElement.click();
     }
 
