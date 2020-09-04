@@ -1,18 +1,19 @@
 package com.epam.pages.gmail;
 
+import com.epam.decorator.elements.Button;
+import com.epam.decorator.elements.TextField;
 import com.epam.pages.BasePage;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class GmailLoginPage extends BasePage {
     @FindBy(id = "identifierId")
-    private WebElement emailInput;
+    private TextField emailInput;
 
     @FindBy(className = "VfPpkd-RLmnJb")
-    private WebElement nextButton;
+    private Button nextButton;
 
     public void enterEmail(String email) {
-        emailInput.sendKeys(email);
+        emailInput.typeAndEnter(email);
     }
 
     public void clickNextButton() {

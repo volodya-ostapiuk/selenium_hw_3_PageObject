@@ -1,5 +1,8 @@
 package com.epam.pages.gmail;
 
+import com.epam.decorator.BaseElement;
+import com.epam.decorator.Button;
+import com.epam.decorator.elements.TextField;
 import com.epam.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,43 +10,43 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GmailMessageFormPage extends BasePage {
     @FindBy(name = "to")
-    private WebElement toField;
+    private TextField toField;
 
     @FindBy(xpath = "//*[@class='aB gQ pE']")
     private WebElement ccAditionLink;
 
     @FindBy(name = "cc")
-    private WebElement ccField;
+    private TextField ccField;
 
     @FindBy(css = ".aB.gQ.pB")
     private WebElement bccAditionLink;
 
     @FindBy(name = "bcc")
-    private WebElement bccField;
+    private TextField bccField;
 
     @FindBy(name = "subjectbox")
-    private WebElement topicFiled;
+    private TextField topicFiled;
 
     @FindBy(xpath = "//*[@class=\"Am Al editable LW-avf tS-tW\"]")
-    private WebElement letterTextFiled;
+    private TextField letterTextFiled;
 
     @FindBy(css = ".T-I.J-J5-Ji.aoO.v7.T-I-atl.L3")
-    private WebElement sendButton;
+    private Button sendButton;
 
     @FindBy(css = "img.Ha")
-    private WebElement saveAsDraftAndCloseButton;
+    private Button saveAsDraftAndCloseButton;
 
     @FindBy(css = ".vN.bfK.a3q")
-    private WebElement filledToField;
+    private TextField filledToField;
 
     @FindBy(css = ".vN.bfK.a3p")
-    private WebElement filledCcField;
+    private TextField filledCcField;
 
     @FindBy(xpath = "//*[@class=\"vN bfK\"]")
-    private WebElement filledBccField;
+    private TextField filledBccField;
 
     @FindBy(className = "aYF")
-    private WebElement filledTopicField;
+    private TextField filledTopicField;
 
     public void enterReceiverEmail(String email) {
         waitOnEmailFieldToBeVisible(toField);
@@ -107,10 +110,10 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void waitOnToFieldToBeInvisible() {
-        webDriverWait.until(ExpectedConditions.invisibilityOf(toField));
+        webDriverWait.until(ExpectedConditions.invisibilityOf(toField.getElement()));
     }
 
-    public void waitOnEmailFieldToBeVisible(WebElement element) {
-        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    public void waitOnEmailFieldToBeVisible(BaseElement element) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(element.getElement()));
     }
 }

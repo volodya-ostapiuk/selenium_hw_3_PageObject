@@ -24,7 +24,7 @@ public class GmailTest implements Constants {
         messageBO = new GmailMessageBO();
     }
 
-    /*
+    /**
      * Enter email, enter password. Wait until new page will be opened and element will be clickable on it.
      * Check does page title contains email. Create new letter. Save it as draft.
      * Check if last draft letter contains needed emails, text and topic. Send saved letter.
