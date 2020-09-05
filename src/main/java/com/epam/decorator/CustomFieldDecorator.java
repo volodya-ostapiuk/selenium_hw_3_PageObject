@@ -34,8 +34,7 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
     }
 
     /**
-     * Возвращает декорируемый класс поля,
-     * либо null если класс не подходит для декоратора
+     * Returns decoratable class for field. Or null if class is not suitable for decorator
      */
     private Class<?> decoratableClass(Field field) {
 

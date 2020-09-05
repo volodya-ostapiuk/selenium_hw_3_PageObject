@@ -25,4 +25,10 @@ public class DriverProvider implements Constants {
         }
         return webDriver;
     }
+
+    public static void quit() {
+        if (webDriver != null) {
+            webDriver.quit();
+        }
+    }
 }

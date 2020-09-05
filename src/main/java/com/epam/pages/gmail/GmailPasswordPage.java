@@ -17,7 +17,7 @@ public class GmailPasswordPage extends BasePage {
     @FindBy(css = "div.aCayab > div")
     private WebElement chosenProfileLink;
 
-    public void enterEmail(String password) {
+    public void enterPassword(String password) {
         passwordInput.typeAndEnter(password);
     }
 

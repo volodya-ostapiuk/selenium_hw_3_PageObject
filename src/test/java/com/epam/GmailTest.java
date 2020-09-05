@@ -54,7 +54,7 @@ public class GmailTest implements Constants {
     }
 
     @AfterClass
-    private void quitDriver() {
-        webDriver.quit();
+    private void tearDown() {
+        DriverProvider.quit();
     }
 }
