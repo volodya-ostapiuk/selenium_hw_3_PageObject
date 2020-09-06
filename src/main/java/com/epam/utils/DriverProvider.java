@@ -6,29 +6,30 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class DriverProvider implements Constants {
-    private static WebDriver webDriver;
+    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
     static {
         System.setProperty(DRIVER_NAME, DRIVER_PATH);
     }
 
     private DriverProvider() {
-        webDriver = new ChromeDriver();
-        webDriver.manage()
+        driverPool.set(new ChromeDriver());
+        driverPool.get().manage()
                 .timeouts()
                 .implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
     }
 
     public static WebDriver getInstance() {
-        if (webDriver == null) {
+        if (driverPool == null) {
             new DriverProvider();
         }
-        return webDriver;
+        return driverPool.get();
     }
 
     public static void quit() {
-        if (webDriver != null) {
-            webDriver.quit();
+        if (driverPool != null) {
+            driverPool.get().quit();
+            driverPool.set(null);
         }
     }
 }

@@ -4,24 +4,27 @@ import com.epam.business.GmailLogInBO;
 import com.epam.business.GmailMessageBO;
 import com.epam.model.MessageEntity;
 import com.epam.utils.Constants;
+import com.epam.utils.DataObjectProvider;
 import com.epam.utils.DriverProvider;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.Iterator;
+import java.util.stream.Stream;
+
 public class GmailTest implements Constants {
-    private WebDriver webDriver;
-    private GmailLogInBO logInBO;
-    private GmailMessageBO messageBO;
 
     @BeforeClass
     private void setUp() {
-        webDriver = DriverProvider.getInstance();
-        webDriver.get(BASE_URL);
-        logInBO = new GmailLogInBO();
-        messageBO = new GmailMessageBO();
+        DriverProvider.getInstance().get(BASE_URL);
+    }
+
+    @DataProvider(parallel = true)
+    public Iterator<Object[]> usersLoginAndPassword() {
+        return Stream.of(DataObjectProvider.getUsers()).iterator();
     }
 
     /**
@@ -29,8 +32,11 @@ public class GmailTest implements Constants {
      * Check does page title contains email. Create new letter. Save it as draft.
      * Check if last draft letter contains needed emails, text and topic. Send saved letter.
      */
-    @Test
+    @Test(dataProvider = "usersLoginAndPassword")
     private void verifyDraftFieldsAreSavedCorrectly() {
+        GmailLogInBO logInBO = new GmailLogInBO();
+        GmailMessageBO messageBO = new GmailMessageBO();
+
         logInBO.logIn(TEST_EMAIL, TEST_PASSWORD);
         Assert.assertTrue(logInBO.getPageTitle().contains(TEST_EMAIL.toLowerCase()),
                 "Wrong login.");

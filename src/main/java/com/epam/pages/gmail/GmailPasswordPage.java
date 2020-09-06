@@ -1,6 +1,5 @@
 package com.epam.pages.gmail;
 
-import com.epam.decorator.BaseElement;
 import com.epam.decorator.elements.Button;
 import com.epam.decorator.elements.TextField;
 import com.epam.pages.BasePage;

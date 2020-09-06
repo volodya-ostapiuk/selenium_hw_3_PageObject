@@ -10,6 +10,22 @@
     {
       "email": "test.automv",
       "password": "testaut50"
+    },
+    {
+      "email": "test.automv1",
+      "password": "testaut51"
+    },
+    {
+      "email": "test.automv2",
+      "password": "testaut52"
+    },
+    {
+      "email": "test.automv3",
+      "password": "testaut53"
+    },
+    {
+      "email": "test.automv4",
+      "password": "testaut54"
     }
   ]
 }
