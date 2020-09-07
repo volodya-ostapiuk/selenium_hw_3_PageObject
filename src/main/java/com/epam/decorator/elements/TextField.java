@@ -28,18 +28,18 @@ public class TextField extends BaseElement {
     }
 
     public void click() {
-        logger.info("Clicking on textField.");
+        logger.info("Clicking on textField with location: " + webElement.getLocation());
         Wait.waitOnElementToBeClickable(webElement);
         webElement.click();
     }
 
     public String getText() {
-        logger.info("Getting text from textField.");
+        logger.info("Getting text from textField with location: " + webElement.getLocation());
         return webElement.getText();
     }
 
     public String getAttribute(String attribute) {
-        logger.info("Getting attribute from textField.");
+        logger.info("Getting attribute from textField with location: " + webElement.getLocation());
         return webElement.getAttribute(attribute);
     }
 }

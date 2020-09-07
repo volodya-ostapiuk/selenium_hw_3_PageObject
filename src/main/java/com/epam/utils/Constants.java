@@ -26,9 +26,5 @@ public interface Constants {
     String TEST_LETTER_TEXT = TEST_MESSAGE.getLetterText();
 
     String WRONG_LOGIN = "Wrong login.";
-    String WRONG_RECEIVER = "Last draft letter doesn't contain created letter receiver.";
-    String WRONG_CC = "Last draft letter doesn't contain created letter cc receiver.";
-    String WRONG_BCC = "Last draft letter doesn't contain created letter bcc receiver.";
-    String WRONG_TOPIC = "Last draft letter doesn't contain created letter topic.";
-    String WRONG_TEXT = "Last draft letter doesn't contain created letter text.";
+    String WRONG_SAVED_DRAFT = "Fields of last draft letter doesn't saved properly.";
 }

@@ -28,9 +28,9 @@ public class GmailTest implements Constants {
     }
 
     /**
-     * Enter email, enter password. Wait until new page will be opened and element will be clickable on it.
-     * Check does page title contains email. Create new letter. Save it as draft.
-     * Check if last draft letter contains needed emails, text and topic. Send saved letter.
+     * Enters email, enters password. Waits until new page will be opened and element will be clickable on it.
+     * Checks does page title contains email. Creates new letter. Saves it as draft.
+     * Checks if last draft letter contains needed emails, text and topic. Sendsmvn cmvn test saved letter.
      */
     @Test(dataProvider = "usersLoginAndPassword")
     private void verifyDraftFieldsAreSavedCorrectly(String userEmail, String userPassword) {
@@ -43,11 +43,7 @@ public class GmailTest implements Constants {
         messageBO.goToDraftsFolderAndClickLastDraftMessage();
 
         MessageEntity filledDraftMessage = messageBO.getDraftMessageEntity();
-        Assert.assertTrue(filledDraftMessage.getReceiver().contains(TEST_RECEIVER_EMAIL), WRONG_RECEIVER);
-        Assert.assertTrue(filledDraftMessage.getCc().contains(TEST_CC_EMAIL), WRONG_CC);
-        Assert.assertTrue(filledDraftMessage.getBcc().contains(TEST_BCC_EMAIL), WRONG_BCC);
-        Assert.assertTrue(filledDraftMessage.getTopic().contains(TEST_LETTER_TOPIC), WRONG_TOPIC);
-        Assert.assertTrue(filledDraftMessage.getLetterText().contains(TEST_LETTER_TEXT), WRONG_TEXT);
+        Assert.assertEquals(filledDraftMessage, TEST_MESSAGE, WRONG_SAVED_DRAFT);
 
         messageBO.sendLastDraftMessage();
     }
