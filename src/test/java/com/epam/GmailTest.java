@@ -32,20 +32,10 @@ public class GmailTest implements Constants {
     @Test(dataProvider = "usersLoginAndPassword")
     private void verifyDraftFieldsAreSavedCorrectly(String userEmail, String userPassword) {
         GmailLogInBO logInBO = new GmailLogInBO();
-        GmailMessageBO messageBO = new GmailMessageBO();
-
-        System.out.println("!!! " + userEmail + " !!! " + userPassword);
-
         logInBO.logIn(userEmail, userPassword);
         Assert.assertTrue(logInBO.getPageTitle().contains(userEmail.toLowerCase()), WRONG_LOGIN);
 
-        System.out.println("!!! " + TEST_MESSAGE);
-        System.out.println("!!! " + TEST_RECEIVER_EMAIL);
-        System.out.println("!!! " + TEST_CC_EMAIL);
-        System.out.println("!!! " + TEST_BCC_EMAIL);
-        System.out.println("!!! " + TEST_LETTER_TOPIC);
-        System.out.println("!!! " + TEST_LETTER_TEXT);
-
+        GmailMessageBO messageBO = new GmailMessageBO();
         messageBO.createDraftMessage(TEST_MESSAGE);
         messageBO.goToDraftsFolderAndClickLastDraftMessage();
 

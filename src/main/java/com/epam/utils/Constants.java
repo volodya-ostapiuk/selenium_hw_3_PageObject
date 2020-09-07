@@ -16,11 +16,8 @@ public interface Constants {
     String BASE_URL = ConfigProperties.getBaseUrl();
     int TIME_WAIT = ConfigProperties.getTimeWait();
     int EXPLICIT_WAIT = ConfigProperties.getExplicitWait();
-    //int FIRST_USER_NUMBER = 0;
     List<UserEntity> USERS = Objects.requireNonNull(getGmailJsonEntity()).getUsers();
     MessageEntity TEST_MESSAGE = MessageEntityProvider.getMessageEntity();
-    /*String TEST_EMAIL = USERS.get(FIRST_USER_NUMBER).getEmail();
-    String TEST_PASSWORD = USERS.get(FIRST_USER_NUMBER).getPassword();*/
     String TEST_RECEIVER_EMAIL = TEST_MESSAGE.getReceiver();
     String TEST_CC_EMAIL = TEST_MESSAGE.getCc();
     String TEST_BCC_EMAIL = TEST_MESSAGE.getBcc();
