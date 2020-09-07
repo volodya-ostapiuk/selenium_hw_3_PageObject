@@ -51,6 +51,6 @@ public class GmailTest implements Constants {
 
     @AfterMethod
     private void tearDown() {
-        //DriverProvider.quit();
+        DriverProvider.quit();
     }
 }
