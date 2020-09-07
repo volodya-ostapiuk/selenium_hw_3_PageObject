@@ -1,5 +1,13 @@
 # selenium_hw_3_PageObject
 
+## Run project
+Pull project to your computer and 
+    ```
+    run mvn
+    ```
+ test to execute test report
+
+## Task
 Common:
 1. Create Maven project
 2. Use TestNG & Selenium to develop tests
