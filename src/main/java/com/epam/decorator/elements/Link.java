@@ -1,6 +1,7 @@
 package com.epam.decorator.elements;
 
 import com.epam.decorator.BaseElement;
+import com.epam.utils.Wait;
 import com.epam.utils.providers.DriverWaitProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,11 +17,7 @@ public class Link extends BaseElement {
 
     public void click() {
         logger.info("Clicking on link with location: " + webElement.getLocation());
-        waitOnElementToBeClickable();
+        Wait.waitOnElementToBeClickable(webElement);
         webElement.click();
-    }
-
-    private void waitOnElementToBeClickable() {
-        DriverWaitProvider.getInstance().until(ExpectedConditions.elementToBeClickable(this.webElement));
     }
 }

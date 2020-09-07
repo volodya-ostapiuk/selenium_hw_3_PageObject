@@ -3,6 +3,7 @@ package com.epam.pages.gmail;
 import com.epam.decorator.elements.Button;
 import com.epam.decorator.elements.Link;
 import com.epam.pages.BasePage;
+import com.epam.utils.Wait;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -19,8 +20,15 @@ public class GmailHomePage extends BasePage {
     @FindBy(css = ".ae4.UI[gh='tl'] tr:nth-child(1)")
     private Link lastDraftMessage;
 
+    @FindBy(css = ".ag.a8k")
+    private Link sentMessageLink;
+
     public void waitOnMailLogoToBeClickable() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(mailLogo.getElement()));
+        Wait.waitOnElementToBeClickable(mailLogo.getElement());
+    }
+
+    public void waitOnSentMessageLinkToBeClickable() {
+        Wait.waitOnElementToBeClickable(sentMessageLink.getElement());
     }
 
     public void clickComposeButton() {

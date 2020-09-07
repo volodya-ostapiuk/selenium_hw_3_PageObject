@@ -56,7 +56,7 @@ public class GmailMessageBO {
     public void sendLastDraftMessage() {
         logger.info("Sending draft message.");
         messageFormPage.sendLetter();
-        logger.info("Waiting on draft message field to be invisible.");
-        messageFormPage.waitOnToFieldToBeInvisible();
+        logger.info("Waiting on draft message sent link to be clickable.");
+        homePage.waitOnSentMessageLinkToBeClickable();
     }
 }

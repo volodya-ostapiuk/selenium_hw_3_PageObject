@@ -4,10 +4,13 @@ import com.epam.business.GmailLogInBO;
 import com.epam.business.GmailMessageBO;
 import com.epam.model.MessageEntity;
 import com.epam.utils.Constants;
-import com.epam.utils.providers.DataProvider;
+import com.epam.utils.providers.DataObjectsProvider;
 import com.epam.utils.providers.DriverProvider;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import org.testng.annotations.AfterMethod;
 
 import java.util.Iterator;
 import java.util.stream.Stream;
@@ -19,9 +22,9 @@ public class GmailTest implements Constants {
         DriverProvider.getInstance().get(BASE_URL);
     }
 
-    @org.testng.annotations.DataProvider(parallel = true)
+    @DataProvider(parallel = true)
     public Iterator<Object[]> usersLoginAndPassword() {
-        return Stream.of(DataProvider.getUsers()).iterator();
+        return Stream.of(DataObjectsProvider.getUsers()).iterator();
     }
 
     /**

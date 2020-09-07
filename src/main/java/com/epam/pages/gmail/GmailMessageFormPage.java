@@ -1,12 +1,11 @@
 package com.epam.pages.gmail;
 
-import com.epam.decorator.BaseElement;
 import com.epam.decorator.elements.Button;
 import com.epam.decorator.elements.Link;
 import com.epam.decorator.elements.TextField;
 import com.epam.pages.BasePage;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GmailMessageFormPage extends BasePage {
     @FindBy(name = "to")
@@ -47,6 +46,9 @@ public class GmailMessageFormPage extends BasePage {
 
     @FindBy(className = "aYF")
     private TextField filledTopicField;
+
+    @FindBy(css = ".nH.Hd")
+    private WebElement messageDialog;
 
     public void enterReceiverEmail(String email) {
         toField.sendKeys(email);
@@ -97,20 +99,10 @@ public class GmailMessageFormPage extends BasePage {
     }
 
     public void sendLetter() {
-        waitOnElementToBeVisible(saveAsDraftAndCloseButton);
         sendButton.click();
     }
 
     public void saveLetterAsDraftAndClose() {
         saveAsDraftAndCloseButton.click();
-        waitOnToFieldToBeInvisible();
-    }
-
-    public void waitOnToFieldToBeInvisible() {
-        webDriverWait.until(ExpectedConditions.invisibilityOf(toField.getElement()));
-    }
-
-    public void waitOnElementToBeVisible(BaseElement element) {
-        webDriverWait.until(ExpectedConditions.visibilityOf(element.getElement()));
     }
 }

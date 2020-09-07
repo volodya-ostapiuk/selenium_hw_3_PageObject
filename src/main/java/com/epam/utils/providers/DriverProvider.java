@@ -15,11 +15,15 @@ public class DriverProvider implements Constants {
     }
 
     private DriverProvider() {
+        driverPool.set(new ChromeDriver());
+        driverPool.get().manage()
+                .timeouts()
+                .implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
     }
 
     public static WebDriver getInstance() {
         if (Objects.isNull(driverPool.get())) {
-            setUp();
+            new DriverProvider();
         }
         return driverPool.get();
     }
@@ -29,12 +33,5 @@ public class DriverProvider implements Constants {
             driverPool.get().quit();
             driverPool.set(null);
         }
-    }
-
-    private static void setUp() {
-        driverPool.set(new ChromeDriver());
-        driverPool.get().manage()
-                .timeouts()
-                .implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
     }
 }

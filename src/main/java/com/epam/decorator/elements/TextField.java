@@ -1,6 +1,7 @@
 package com.epam.decorator.elements;
 
 import com.epam.decorator.BaseElement;
+import com.epam.utils.Wait;
 import com.epam.utils.providers.DriverWaitProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,20 +18,20 @@ public class TextField extends BaseElement {
 
     public void sendKeys(String text) {
         logger.info("Typing textField value: " + text);
-        waitOnElementToBeVisible();
+        Wait.waitOnElementToBeVisible(webElement);
         webElement.sendKeys(text);
     }
 
     public void typeAndEnter(String text) {
         logger.info("Typing and entering textField value: " + text);
-        waitOnElementToBeClickable();
+        Wait.waitOnElementToBeClickable(webElement);
         webElement.sendKeys(text);
         webElement.sendKeys(Keys.ENTER);
     }
 
     public void click() {
         logger.info("Clicking on textField.");
-        waitOnElementToBeClickable();
+        Wait.waitOnElementToBeClickable(webElement);
         webElement.click();
     }
 
@@ -44,11 +45,7 @@ public class TextField extends BaseElement {
         return webElement.getAttribute(attribute);
     }
 
-    private void waitOnElementToBeVisible() {
-        DriverWaitProvider.getInstance().until(ExpectedConditions.visibilityOf(webElement));
-    }
-
-    private void waitOnElementToBeClickable() {
-        DriverWaitProvider.getInstance().until(ExpectedConditions.elementToBeClickable(webElement));
+    public boolean isDisplayed() {
+        return webElement.isDisplayed();
     }
 }
