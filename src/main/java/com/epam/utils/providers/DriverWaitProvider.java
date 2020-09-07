@@ -1,5 +1,6 @@
-package com.epam.utils;
+package com.epam.utils.providers;
 
+import com.epam.utils.Constants;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DriverWaitProvider implements Constants {

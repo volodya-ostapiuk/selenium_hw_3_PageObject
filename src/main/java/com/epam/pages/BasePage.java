@@ -1,8 +1,8 @@
 package com.epam.pages;
 
 import com.epam.decorator.CustomFieldDecorator;
-import com.epam.utils.DriverProvider;
-import com.epam.utils.DriverWaitProvider;
+import com.epam.utils.providers.DriverProvider;
+import com.epam.utils.providers.DriverWaitProvider;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;

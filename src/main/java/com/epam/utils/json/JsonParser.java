@@ -1,4 +1,4 @@
-package com.epam.utils;
+package com.epam.utils.json;
 
 import com.epam.model.GmailJsonEntity;
 import com.epam.utils.properties.ConfigProperties;

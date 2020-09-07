@@ -1,8 +1,10 @@
-package com.epam.utils;
+package com.epam.utils.providers;
 
+import com.epam.utils.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class DriverProvider implements Constants {
@@ -13,23 +15,26 @@ public class DriverProvider implements Constants {
     }
 
     private DriverProvider() {
-        driverPool.set(new ChromeDriver());
-        driverPool.get().manage()
-                .timeouts()
-                .implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
     }
 
     public static WebDriver getInstance() {
-        if (driverPool == null) {
-            new DriverProvider();
+        if (Objects.isNull(driverPool.get())) {
+            setUp();
         }
         return driverPool.get();
     }
 
     public static void quit() {
-        if (driverPool != null) {
+        if (Objects.nonNull(driverPool.get())) {
             driverPool.get().quit();
             driverPool.set(null);
         }
+    }
+
+    private static void setUp() {
+        driverPool.set(new ChromeDriver());
+        driverPool.get().manage()
+                .timeouts()
+                .implicitlyWait(TIME_WAIT, TimeUnit.SECONDS);
     }
 }

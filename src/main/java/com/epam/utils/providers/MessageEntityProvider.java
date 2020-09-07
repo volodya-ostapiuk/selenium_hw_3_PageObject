@@ -1,11 +1,11 @@
-package com.epam.utils;
+package com.epam.utils.providers;
 
 import com.epam.model.MessageEntity;
 
 import java.util.Objects;
 import java.util.Random;
 
-import static com.epam.utils.JsonParser.getGmailJsonEntity;
+import static com.epam.utils.json.JsonParser.getGmailJsonEntity;
 
 public class MessageEntityProvider {
     public static MessageEntity message;

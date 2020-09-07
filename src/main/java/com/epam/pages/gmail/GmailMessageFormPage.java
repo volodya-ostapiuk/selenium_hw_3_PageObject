@@ -36,10 +36,10 @@ public class GmailMessageFormPage extends BasePage {
     @FindBy(css = "img.Ha")
     private Button saveAsDraftAndCloseButton;
 
-    @FindBy(css = ".vN.bfK.a3q")
+    @FindBy(xpath = "//*[@class=\"vN bfK a3q\"]")
     private TextField filledToField;
 
-    @FindBy(css = ".vN.bfK.a3p")
+    @FindBy(xpath = "//*[@class=\"vN bfK a3p\"]")
     private TextField filledCcField;
 
     @FindBy(xpath = "//*[@class=\"vN bfK\"]")
