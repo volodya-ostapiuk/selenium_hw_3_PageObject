@@ -5,7 +5,6 @@ import com.epam.decorator.elements.Link;
 import com.epam.pages.BasePage;
 import com.epam.utils.Wait;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GmailHomePage extends BasePage {
     @FindBy(xpath = "//*[@class=\"T-I T-I-KE L3\"]")

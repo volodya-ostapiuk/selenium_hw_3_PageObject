@@ -9,7 +9,7 @@ public abstract class BasePage {
     protected WebDriver webDriver;
 
     public BasePage() {
-        this.webDriver = DriverProvider.getInstance();
+        webDriver = DriverProvider.getInstance();
         PageFactory.initElements(new CustomFieldDecorator(webDriver), this);
     }
 }

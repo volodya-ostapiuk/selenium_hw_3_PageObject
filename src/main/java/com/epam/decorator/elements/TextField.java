@@ -2,12 +2,10 @@ package com.epam.decorator.elements;
 
 import com.epam.decorator.BaseElement;
 import com.epam.utils.Wait;
-import com.epam.utils.providers.DriverWaitProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TextField extends BaseElement {
     private static Logger logger = LogManager.getLogger(TextField.class);
@@ -43,9 +41,5 @@ public class TextField extends BaseElement {
     public String getAttribute(String attribute) {
         logger.info("Getting attribute from textField.");
         return webElement.getAttribute(attribute);
-    }
-
-    public boolean isDisplayed() {
-        return webElement.isDisplayed();
     }
 }
