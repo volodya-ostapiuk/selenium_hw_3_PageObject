@@ -2,7 +2,7 @@ package com.epam.utils.providers;
 
 import com.epam.utils.Constants;
 
-public class DataProvider implements Constants {
+public class DataObjectsProvider implements Constants {
     public static Object[][] getUsers() {
         int usersAmount = USERS.size();
         Object[][] users = new Object[usersAmount][];
