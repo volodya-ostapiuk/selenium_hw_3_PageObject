@@ -28,8 +28,8 @@ public class GmailMessageBO {
     private void fillDraftMessage(MessageEntity message) {
         messageFormPage.enterReceiverEmail(message.getReceiver());
         messageFormPage.displayCcField();
-        messageFormPage.enterCcEmail(message.getCc());
         messageFormPage.displayBccField();
+        messageFormPage.enterCcEmail(message.getCc());
         messageFormPage.enterBccEmail(message.getBcc());
         messageFormPage.enterTopic(message.getTopic());
         messageFormPage.enterLetterText(message.getLetterText());

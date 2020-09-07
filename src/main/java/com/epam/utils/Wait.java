@@ -12,4 +12,8 @@ public class Wait {
     public static void waitOnElementToBeVisible(WebElement webElement) {
         DriverWaitProvider.getInstance().until(ExpectedConditions.visibilityOf(webElement));
     }
+
+    public static void waitOnElementStaleness(WebElement webElement) {
+        DriverWaitProvider.getInstance().until(ExpectedConditions.stalenessOf(webElement));
+    }
 }

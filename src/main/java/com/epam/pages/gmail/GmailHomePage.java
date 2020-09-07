@@ -4,6 +4,8 @@ import com.epam.decorator.elements.Button;
 import com.epam.decorator.elements.Link;
 import com.epam.pages.BasePage;
 import com.epam.utils.Wait;
+import com.epam.utils.providers.DriverWaitProvider;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.FindBy;
 
 public class GmailHomePage extends BasePage {
@@ -35,7 +37,10 @@ public class GmailHomePage extends BasePage {
     }
 
     public void clickDraftsFolder() {
-        draftsFolder.click();
+        DriverWaitProvider.getInstance().ignoring(StaleElementReferenceException.class).until(driver -> {
+            draftsFolder.click();
+            return true;
+        });
     }
 
     public void clickLastDraftMessage() {
